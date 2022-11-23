@@ -37,6 +37,38 @@ namespace WordlePOM
             element.Click();
         }
 
+        public void SelectLetter(char letter)
+        {
+            char lowerCaseLetter = Char.ToLower(letter);
+            
+            IWebElement element = WebDriver.FindElement(By.XPath($"//button[text()='{lowerCaseLetter}']"));
+            
+            element.Click();
+        }
+
+        public void SelectEnter()
+        {
+            IWebElement element = WebDriver.FindElement(By.XPath("//button[text()='enter']"));
+
+            element.Click();
+        }
+
+        public void SelectBackspace()
+        {
+            IWebElement element = WebDriver.FindElement(By.XPath("//button[@aria-label='backspace']"));
+
+            element.Click();
+        }
+
+        public void EnterWord(string word)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                SelectLetter(word[i]);
+            }
+
+            SelectEnter();
+        }
 
     }
 
